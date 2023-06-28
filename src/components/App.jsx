@@ -14,8 +14,11 @@ export class App extends Component {
     q: '',
     loading: false,
     modalOpen: false,
+    showBtn: false,
   };
   fetchData = async () => {
+    const { page } = this.state;
+    // const;
     try {
       this.setState({ loading: true });
       const data = await imagesApi({
@@ -25,17 +28,19 @@ export class App extends Component {
 
       this.setState(prev => ({
         images: [...prev.images, ...data.data.hits],
-        loading: false,
+        // showBtn: page < Math.ceil(total_results / 15),
       }));
     } catch (err) {
       console.log(err);
+    } finally {
+      this.setState({
+        loading: false,
+      });
     }
   };
-  componentDidMount() {
-    this.fetchData();
-  }
+
   handleChangeQuery = q => {
-    this.setState({ q });
+    this.setState({ q, images: [], page: 1, loading: false, modalOpen: false });
   };
   // componentWillUnmount() {}
   componentDidUpdate = (_, prevState) => {
@@ -61,7 +66,7 @@ export class App extends Component {
 
           <ImageGallery arr={this.state.images} onClick={this.toggleModal} />
 
-          {this.state.images.length && <Button cb={this.handleBtnClick} />}
+          {this.state.showBtn && <Button cb={this.handleBtnClick} />}
           {this.modalOpen && <Modal onClick={this.toggleModal} />}
         </>
       </>
