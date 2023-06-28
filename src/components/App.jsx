@@ -56,20 +56,12 @@ export class App extends Component {
       <>
         <Searchbar onSubmit={this.handleChangeQuery} />
 
-        {/* {this.state.images.length !== 0 ? (
-          <>
-            <ImageGallery arr={this.state.images} />
-            <Button cb={this.handleBtnClick} />
-          </>
-        ) : (
-          <h2>Sorry, no images found</h2>
-        )} */}
-
         <>
           {this.state.loading && <Loader />}
 
           <ImageGallery arr={this.state.images} onClick={this.toggleModal} />
-          <Button cb={this.handleBtnClick} />
+
+          {this.state.images.length && <Button cb={this.handleBtnClick} />}
           {this.modalOpen && <Modal onClick={this.toggleModal} />}
         </>
       </>
