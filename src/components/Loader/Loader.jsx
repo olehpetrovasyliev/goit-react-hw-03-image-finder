@@ -1,4 +1,4 @@
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import { Grid } from 'react-loader-spinner';
 
 // const Flex = styl;
