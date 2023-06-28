@@ -18,9 +18,7 @@ export class ImageGalleryItem extends Component {
           <img src={src} alt={alt} className={css.ImageGalleryItemImage} />
         </li>
         {isOpen ? (
-          <Modal onClick={this.toggleModal} src={url} alt={alt}>
-            <img />
-          </Modal>
+          <Modal onClick={this.toggleModal} src={url} alt={alt}></Modal>
         ) : null}
       </>
     );
