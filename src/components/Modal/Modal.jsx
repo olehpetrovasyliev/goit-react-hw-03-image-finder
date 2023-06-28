@@ -11,3 +11,4 @@ export const Modal = ({ src, alt, onClick }) => {
     </div>
   );
 };
+//for git
