@@ -4,8 +4,6 @@ import { imagesApi } from 'services/apiGet';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
-import { Modal } from './Modal/Modal';
-// import css from '../index.css';
 
 export class App extends Component {
   state = {

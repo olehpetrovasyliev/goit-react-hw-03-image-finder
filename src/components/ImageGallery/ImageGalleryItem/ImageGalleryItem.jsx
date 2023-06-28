@@ -7,9 +7,7 @@ export class ImageGalleryItem extends Component {
     isOpen: false,
   };
   toggleModal = () => {
-    {
-      this.setState(prev => ({ isOpen: !prev.isOpen }));
-    }
+    this.setState(prev => ({ isOpen: !prev.isOpen }));
   };
   handleKeydown = e => {
     if (e.key === 'Escape') {

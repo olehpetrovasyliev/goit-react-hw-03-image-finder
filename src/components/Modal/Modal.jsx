@@ -28,7 +28,7 @@ export class Modal extends Component {
   }
 
   render() {
-    const { onClose, src, alt } = this.props;
+    const { src, alt } = this.props;
     return (
       <div className={css.Overlay} onClick={this.handleOutsideClick}>
         <div className={css.Modal}>
