@@ -1,5 +1,5 @@
-import propTypes from 'prop-types';
 import { Component } from 'react';
+import css from './Searchbar.module.css';
 
 export class Searchbar extends Component {
   state = {
@@ -9,17 +9,17 @@ export class Searchbar extends Component {
   handleChangeValue = ({ target }) => {
     this.setState({ inputValue: target.value });
   };
-  handleSumbit = (e, query) => {
+  handleSubmit = e => {
     e.preventDefault();
-    // this.props.handleChangeQuery(this.state.inputValue);
+    this.props.onSubmit(this.state.inputValue);
     this.setState({ inputValue: '' });
   };
   render() {
     return (
-      <header className={CSS.searchbar}>
-        <form className={CSS.SearchForm} onSubmit={this.handleSumbit}>
-          <button type="submit" className={CSS.SearchForm_button}>
-            <span className={CSS.button_label}>Search</span>
+      <header className={css.Searchbar}>
+        <form className={css.SearchForm} onSubmit={this.handleSubmit}>
+          <button type="css" className={css.SearchForm_button}>
+            <span className={css.button_label}>Search</span>
           </button>
 
           <input
@@ -27,6 +27,7 @@ export class Searchbar extends Component {
             type="text"
             autoComplete="off"
             value={this.state.value}
+            onChange={this.handleChangeValue}
             autoFocus
             placeholder="Search images and photos"
             name="searcher"

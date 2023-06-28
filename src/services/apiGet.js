@@ -10,6 +10,8 @@ export const imagesApi = async searchParams => {
     params: {
       key: '37915985-2ab767cc021bd303dee7a6ad2',
       per_page: 12,
+      orientation: 'horizontal',
+      image_type: 'photo',
       ...searchParams,
     },
   });

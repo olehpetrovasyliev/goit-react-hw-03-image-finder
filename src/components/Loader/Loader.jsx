@@ -1,6 +1,7 @@
 import propTypes from 'prop-types';
 import { Grid } from 'react-loader-spinner';
 
+// const Flex = styl;
 export const Loader = ({ isVisible }) => {
   return (
     <Grid
@@ -13,9 +14,10 @@ export const Loader = ({ isVisible }) => {
       wrapperClass=""
       visible={true}
     />
+    // </div>
   );
 };
 
-ImageGallery.propTypes = {
-  isVisible: propTypes.node.bool,
-};
+// Loader.propTypes = {
+//   isVisible: propTypes.node.boolean,
+// };

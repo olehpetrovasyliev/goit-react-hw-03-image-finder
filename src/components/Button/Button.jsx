@@ -1,13 +1,14 @@
 import propTypes from 'prop-types';
+import css from './Button.module.css';
 
 export const Button = ({ cb }) => {
   return (
-    <button onClick={cb} className={CSS.Button}>
+    <button onClick={cb} className={css.Button} type="button">
       Load more
     </button>
   );
 };
 
-ImageGallery.propTypes = {
+Button.propTypes = {
   cb: propTypes.func.isRequired,
 };
