@@ -13,7 +13,7 @@ export class App extends Component {
     page: 1,
     q: '',
     loading: false,
-    error: false,
+    modalOpen: false,
   };
   fetchData = async () => {
     try {
@@ -66,12 +66,12 @@ export class App extends Component {
         )} */}
 
         <>
+          {this.state.loading && <Loader />}
+
           <ImageGallery arr={this.state.images} onClick={this.toggleModal} />
           <Button cb={this.handleBtnClick} />
-          {this.state.loading && <Loader />}
+          {this.modalOpen && <Modal onClick={this.toggleModal} />}
         </>
-
-        <Modal></Modal>
       </>
     );
   }

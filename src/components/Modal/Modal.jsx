@@ -1,22 +1,13 @@
 // import propTypes from 'prop-types';
-import { Component } from 'react';
+// import { Component } from 'react';
+import css from './Modal.module.css';
 
-export class Modal extends Component {
-  state = {
-    isOpen: false,
-  };
-  toggleModal = () => {
-    this.setState(prev => ({ isOpen: !prev.isOpen }));
-  };
-
-  render() {
-    const { src, alt } = this.props;
-    return this.state.isOpen ? (
-      <div className={CSS.Overlay} onClick={this.toggleModal}>
-        <div className={CSS.Modal}>
-          <img src={src} alt={alt} width="800px" height="600px" />
-        </div>
+export const Modal = ({ src, alt, onClick }) => {
+  return (
+    <div className={css.Overlay} onClick={onClick}>
+      <div className={css.Modal}>
+        <img src={src} alt={alt} width="800px" height="600px" />
       </div>
-    ) : null;
-  }
-}
+    </div>
+  );
+};

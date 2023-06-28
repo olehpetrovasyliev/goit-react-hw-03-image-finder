@@ -14,12 +14,12 @@ export class ImageGalleryItem extends Component {
     const { isOpen } = this.state;
     return (
       <>
-        <li className={css.ImageGalleryItem}>
+        <li className={css.ImageGalleryItem} onClick={this.toggleModal}>
           <img src={src} alt={alt} className={css.ImageGalleryItemImage} />
         </li>
         {isOpen ? (
-          <Modal>
-            <img src={url} alt={alt} />
+          <Modal onClick={this.toggleModal} src={url}>
+            <img />
           </Modal>
         ) : null}
       </>
