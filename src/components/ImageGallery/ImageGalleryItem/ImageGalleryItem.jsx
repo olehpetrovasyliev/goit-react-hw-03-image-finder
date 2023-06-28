@@ -6,10 +6,16 @@ export class ImageGalleryItem extends Component {
   state = {
     isOpen: false,
   };
-  toggleModal = e => {
-    if (e.target === e.currentTarget) {
+  toggleModal = () => {
+    {
       this.setState(prev => ({ isOpen: !prev.isOpen }));
     }
+  };
+  handleKeydown = e => {
+    if (e.key === 'Escape') {
+      this.toggleModal();
+    }
+    // console.log(e);
   };
   render() {
     const { src, alt, url } = this.props;
@@ -25,7 +31,12 @@ export class ImageGalleryItem extends Component {
           />
         </li>
         {isOpen ? (
-          <Modal onClick={this.toggleModal} src={url} alt={alt}></Modal>
+          <Modal
+            onKeydown={this.handleKeydown}
+            onClose={this.toggleModal}
+            src={url}
+            alt={alt}
+          ></Modal>
         ) : null}
       </>
     );

@@ -17,18 +17,18 @@ export class App extends Component {
     showBtn: false,
   };
   fetchData = async () => {
-    const { page } = this.state;
+    const { page, q } = this.state;
     // const;
     try {
       this.setState({ loading: true });
       const data = await imagesApi({
-        q: this.state.q,
-        page: this.state.page,
+        q,
+        page,
       });
 
       this.setState(prev => ({
         images: [...prev.images, ...data.data.hits],
-        // showBtn: page < Math.ceil(total_results / 15),
+        showBtn: page < Math.ceil(data.data.totalHits / 12),
       }));
     } catch (err) {
       console.log(err);
@@ -55,6 +55,11 @@ export class App extends Component {
     }));
     // this.fetchData();
   };
+  // toggleModal = () => {
+  //   this.setState(prev => {
+  //     modalOpen: !prev.modalOpen;
+  //   });
+  // };
 
   render() {
     return (
@@ -64,10 +69,9 @@ export class App extends Component {
         <>
           {this.state.loading && <Loader />}
 
-          <ImageGallery arr={this.state.images} onClick={this.toggleModal} />
+          <ImageGallery arr={this.state.images} />
 
           {this.state.showBtn && <Button cb={this.handleBtnClick} />}
-          {this.modalOpen && <Modal onClick={this.toggleModal} />}
         </>
       </>
     );
